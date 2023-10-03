@@ -1,0 +1,5 @@
+#!/bin/bash
+
+PWD=`pwd`
+IMAGE_NAME=`basename "${PWD}"`
+docker build . -t ${IMAGE_NAME} "$@"

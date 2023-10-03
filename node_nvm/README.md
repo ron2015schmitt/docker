@@ -1,11 +1,17 @@
-# This Dockerfile builds:
-# Ubuntu with curl, NVM, and NodeJS
-# The versions are called out in the file
+# Description 
 
+This Dockerfile builds: 
+- Ubuntu 
+- curl
+- nvm
+- npm
+- nodejs
+
+The versions are called out in the file
 
 # Build command
 ```bash 
-docker build . -t node_nvm
+./build 
 ```
 Include option `--progress=plain` to print verbosely.
 Include option `--no-cache` to clear your local docker build cache.
@@ -15,7 +21,7 @@ Include option `--no-cache` to clear your local docker build cache.
 
 ```bash
 cd path-to-your-files
-docker run -it --rm -v /"${PWD}":/home/user/work node_nvm
+docker run -it --rm -v /"${PWD}":/home/user/work   node_nvm
 ```
 
 The option `-v /"${PWD}":/home/user/work` causes your files in the current directory to be *mounted* at `/home/user/work`` inside the container. Any changes made inside the container will change the files that are outside the container.
