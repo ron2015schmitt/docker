@@ -5,7 +5,7 @@
 
 # Build command
 ```bash 
-docker build . -t node_nvm
+docker build . -t node_pnpm
 ```
 Include option `--progress=plain` to print verbosely.
 Include option `--no-cache` to clear your local docker build cache.
@@ -15,7 +15,7 @@ Include option `--no-cache` to clear your local docker build cache.
 
 ```bash
 cd path-to-your-files
-docker run -it --rm -v /"${PWD}":/home/user/work node_nvm
+docker run -it --rm -v /"${PWD}":/home/user/work node_pnpm
 ```
 
 The option `-v /"${PWD}":/home/user/work` causes your files in the current directory to be *mounted* at `/home/user/work`` inside the container. Any changes made inside the container will change the files that are outside the container.

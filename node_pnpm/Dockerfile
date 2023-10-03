@@ -11,12 +11,13 @@ SHELL ["/bin/bash", "-cl"]
 ENV NODE_VERSION=18.18.0  
 ENV NPM_VERSION=10.1.0
 ENV NVM_VERSION=0.39.5
+ENV PNPM_VERSION=8.8.0
 
 
 # Install curl 
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update \
-  && apt-get install -y ca-certificates curl dos2unix 
+  && apt-get install -y ca-certificates curl dos2unix npm
 
 # create user account
 RUN useradd -ms /bin/bash user
@@ -29,6 +30,7 @@ RUN echo "HOME=${HOME}"
 COPY aliases ${HOME}/temp
 RUN dos2unix --allow-chown ${HOME}/temp
 RUN cat temp >> ${HOME}/.bashrc && rm temp
+
 
 # Install NVM via curl
 # https://github.com/nvm-sh/nvm#installing-and-updating
@@ -45,9 +47,14 @@ RUN source $NVM_DIR/nvm.sh && \
   nvm alias default v${NODE_VERSION} && \
   nvm install --latest-npm
 
+
+# # Install PNPM via corepack
 RUN source $NVM_DIR/nvm.sh && \
-  echo "node -> "`node --version` && \
-  echo "npm -> "`npm --version`
+  corepack enable && \
+  corepack prepare pnpm@${PNPM_VERSION} --activate
+
+
+
 
 
 
