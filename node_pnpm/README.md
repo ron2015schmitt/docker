@@ -13,7 +13,7 @@ The versions are called out in the file
 
 # Build command
 ```bash 
-build 
+../build 
 ```
 Include option `--progress=plain` to print verbosely.
 Include option `--no-cache` to clear your local docker build cache.
