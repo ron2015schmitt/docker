@@ -1,0 +1,7 @@
+
+
+function vers() {
+    echo "nvm -> `nvm --version`"
+    echo "npm -> `npm --version`"
+    echo "node -> `node --version`"
+}
