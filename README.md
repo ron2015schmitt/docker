@@ -60,13 +60,16 @@ https://code.visualstudio.com/docs/devcontainers/attach-container
 
 To attach to a Docker container, either 
 
-- Hit F1 by and type `Dev Containers: Attach to Running Container...` in the Command Palette
-- or use the **Remote Explorer** in the **Activity Bar** and from the **Containers** view, select the **Attach to Container** inline action on the container you want to connect to.
+- Step 1: Hit F1 by and type `Dev Containers: Attach to Running Container...` in the Command Palette
+
  
 ![image](https://github.com/ron2015schmitt/docker/assets/11559541/310d7f53-9b23-4077-a33d-760e16535896)
 
 ![image](https://github.com/ron2015schmitt/docker/assets/11559541/761bc60d-6030-42c2-a78f-657141d75d6d)
 
+
+- or use the **Remote Explorer** in the **Activity Bar** and from the **Containers** view, select the **Attach to Container** inline action on the container you want to connect to.
+- 
 
 
 # pnpm
