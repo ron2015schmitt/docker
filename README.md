@@ -54,6 +54,56 @@ git config --global user.name "Your Name"
 Do not use option `-rm` in `docker run` command if you want the git info to persist.
 
 
+# Connecting to a Container with VS Code
+
+https://code.visualstudio.com/docs/devcontainers/attach-container  
+
+To attach to a Docker container, either select Dev Containers: Attach to Running Container... from the Command Palette (F1) or use the Remote Explorer in the Activity Bar and from the Containers view, select the Attach to Container inline action on the container you want to connect to.
+ 
+![image](https://github.com/ron2015schmitt/docker/assets/11559541/62940875-c0b3-4346-907e-83bbb193e457)
+
+![image](https://github.com/ron2015schmitt/docker/assets/11559541/310d7f53-9b23-4077-a33d-760e16535896)
+
+![image](https://github.com/ron2015schmitt/docker/assets/11559541/761bc60d-6030-42c2-a78f-657141d75d6d)
+
+
+
+
+
+
+# pnpm
+
+https://pnpm.io/package_json 
+
+package.json
+```json
+The manifest file of a package. It contains all the package's metadata, including dependencies, title, author, et cetera. This is a standard preserved across all major Node.JS package managers, including pnpm.
+Section 1.	engines
+You can specify the version of Node and pnpm that your software works on:
+{
+    "engines": {
+        "node": ">=10",
+        "pnpm": ">=3"
+    }
+}
+```
+
+During local development, pnpm will always fail with an error message if its version does not match the one specified in the engines field.
+Unless the user has set the engine-strict config flag (see .npmrc), this field is advisory only and will only produce warnings when your package is installed as a dependency.
+
+You can specify the version of Node and pnpm that your software works on:
+```json
+{
+    "engines": {
+        "node": ">=10",
+        "pnpm": ">=3"
+    }
+}
+```
+
+During local development, `pnpm` will always fail with an error message if its version does not match the one specified in the engines field.
+
+
 
 # Angular projects
 
@@ -66,22 +116,30 @@ Also make sure that `EXPOSE 4200` is included in the Dockerfile.
 Keep in mind that the first time you run `ng serve` inside a project takes a very long time, >10 minutes.
 
 
-## npm
+## project creation with npm
 ```bash
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
 ng new project-name  --skip-git
 ```
 
-## pnpm
+## project creation with pnpm
 ```bash
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
 ng new sample-project  --skip-git --package-manager=pnpm
 ```
 
-Serving content
+Once your project has been created you must stick with the chosen package manager for all local package usage.
+
+
+## Serving content
+
 ```bash
 ng serve --host 0.0.0.0 --disable-host-check
 ```
+
+
+
+ 
 
 
 
