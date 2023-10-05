@@ -29,15 +29,15 @@ The option `-v /"${PWD}":/home/user/work` causes your files in the current direc
 
 The option `-it` puts you in an interactive tty terminal.
 
-Include the option `-rm` deletes the container upon exit (and start anew the next time).
+Include option `-name container-name` to give your container a name
+
+Include option `-rm` to delete the container upon exit (and start anew the next time).
 
 Include option `-u 0` to have root access inside the container
 
-Include option `-name container-name` to give your container a name
-
 Include option `-p port_outside:port_inside` for each TCP/IP port that is needed.
 
-To verify the versions beign used once inside the container, type
+Once inside the container, type the following to verify the versions of commands in use:
 
 ```bash
 info
