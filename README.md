@@ -75,11 +75,13 @@ To attach to a Docker container, either select Dev Containers: Attach to Running
 
 https://pnpm.io/package_json 
 
-package.json
-```json
+## package.json
+
 The manifest file of a package. It contains all the package's metadata, including dependencies, title, author, et cetera. This is a standard preserved across all major Node.JS package managers, including pnpm.
-Section 1.	engines
+
 You can specify the version of Node and pnpm that your software works on:
+
+```json
 {
     "engines": {
         "node": ">=10",
@@ -90,19 +92,6 @@ You can specify the version of Node and pnpm that your software works on:
 
 During local development, pnpm will always fail with an error message if its version does not match the one specified in the engines field.
 Unless the user has set the engine-strict config flag (see .npmrc), this field is advisory only and will only produce warnings when your package is installed as a dependency.
-
-You can specify the version of Node and pnpm that your software works on:
-```json
-{
-    "engines": {
-        "node": ">=10",
-        "pnpm": ">=3"
-    }
-}
-```
-
-During local development, `pnpm` will always fail with an error message if its version does not match the one specified in the engines field.
-
 
 
 # Angular projects
