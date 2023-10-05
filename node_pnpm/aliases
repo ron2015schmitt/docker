@@ -1,9 +1,0 @@
-
-
-function info() {
-    echo "Docker image -> node_pnpm"
-    echo "pnpm -> `pnpm --version`"
-    echo "corepack -> `corepack --version`"
-    echo "npm -> `npm --version`"
-    echo "node -> `node --version`"
-}

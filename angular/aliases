@@ -1,0 +1,11 @@
+
+
+function info() {
+    echo "Docker image -> angular"
+    echo "angular -> `ng version`"
+    echo "nvm -> `nvm --version`"
+    echo "node -> `node --version`"
+    echo "npm -> `npm --version`"
+    echo "corepack -> `corepack --version`"
+    echo "pnpm -> `pnpm --version`"
+}

@@ -1,8 +1,0 @@
-
-
-function info() {
-    echo "Docker image -> node_nvm"
-    echo "nvm -> `nvm --version`"
-    echo "npm -> `npm --version`"
-    echo "node -> `node --version`"
-}

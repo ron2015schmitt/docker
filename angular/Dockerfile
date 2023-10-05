@@ -9,14 +9,21 @@ SHELL ["/bin/bash", "-cl"]
 
 # NODE_VERSION=18.18 comes with npm 9.8.1 and corepack 0.19.0
 ENV NODE_VERSION=18.18.0  
-ENV NPM_VERSION=10.1.0
+ENV NPM_VERSION=10.2.0
 ENV NVM_VERSION=0.39.5
+ENV PNPM_VERSION=8.8.0
+ENV ANGULAR_VERSION=16.2.5
 
+# Expose ports
+# 4200 is used by Angular
+EXPOSE 4200  
 
 # Install curl 
 RUN DEBIAN_FRONTEND=noninteractive \
-  apt-get update \
-  && apt-get install -y ca-certificates curl dos2unix 
+  apt-get update && \
+  apt-get upgrade -y &&\
+  apt-get install -y ca-certificates curl dos2unix git
+
 
 # create user account
 RUN useradd -ms /bin/bash user
@@ -29,6 +36,7 @@ RUN echo "HOME=${HOME}"
 COPY aliases ${HOME}/temp
 RUN dos2unix --allow-chown ${HOME}/temp
 RUN cat temp >> ${HOME}/.bashrc && rm temp
+
 
 # Install NVM via curl
 # https://github.com/nvm-sh/nvm#installing-and-updating
@@ -45,13 +53,17 @@ RUN source $NVM_DIR/nvm.sh && \
   nvm alias default v${NODE_VERSION} && \
   nvm install --latest-npm
 
+
+# Install npm via npm
 RUN source $NVM_DIR/nvm.sh && \
-  echo "node -> "`node --version` && \
-  echo "npm -> "`npm --version`
+  npm install -g npm@~${NPM_VERSION}
 
+# Install PNPM via corepack
+RUN source $NVM_DIR/nvm.sh && \
+  corepack enable && \
+  corepack prepare pnpm@${PNPM_VERSION} --activate
 
-
-
-
-
+# Install Angular via npm
+RUN source $NVM_DIR/nvm.sh && \
+  npm install -g @angular/cli@${ANGULAR_VERSION}
 
