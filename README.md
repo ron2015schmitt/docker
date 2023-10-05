@@ -3,7 +3,7 @@
 
 Each subdirectory holds a different Dockerfile for various builds.
 
-The docker image is given the same name as the subdirectory housing the build file.
+During the build process, the docker image is given the same name as the subdirectory housing the build file.
 
 
 # Build command
@@ -35,6 +35,7 @@ Include option `-u 0` to have root access inside the container
 
 Include option `-name container-name` to give your container a name
 
+Include option `-p port_outside:port_inside` for each TCP/IP port that is needed.
 
 To verify the versions beign used once inside the container, type
 
@@ -56,7 +57,7 @@ Do not use option `-rm` in `docker run` command if you want the git info to pers
 
 # Angular projects
 
-Angular likes that you have git and git credentials set up.  Although it's best to use git outside the container.
+By default, Angular needs that you have git and git credentials set up because it sets up a git project.  However, it's best to include the option `--skip-git` during ng project creation and use git outside the container.
 
 Include option `-p 4200:4200` in `docker run` command so that `ng serve` works.
 
@@ -68,13 +69,13 @@ Keep in mind that the first time you run `ng serve` inside a project takes a ver
 ## npm
 ```bash
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
-ng new project-name 
+ng new project-name  --skip-git
 ```
 
 ## pnpm
 ```bash
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
-ng new sample-project --package-manager=pnpm
+ng new sample-project  --skip-git --package-manager=pnpm
 ```
 
 Serving content
