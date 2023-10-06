@@ -109,28 +109,101 @@ Keep in mind that the first time you run `ng serve` inside a project takes a ver
 ## project creation with npm
 ```bash
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
-ng new project-name  --skip-git
+ng new sample-project  --skip-git
 ```
 
 ## project creation with pnpm
 ```bash
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
-ng new sample-project  --skip-git --package-manager=pnpm
+ng new sample-project --minimal --skip-tests --skip-git --package-manager=pnpm
+cd sample-project
+pnpm add --save-dev typescript
 ```
 
-Once your project has been created you must stick with the chosen package manager for all local package usage.
+### changing package manager
 
 
-## Serving content
+> [!WARNING]
+> Always use care when performing `rm -fr`
+
+```bash
+rm -fr node_modules/
+```
+
+Add the following to `angular.json`
+```json
+  "cli": {
+    "packageManager": "<package-manager>"
+  },
+```
+
+where `<package-manager>` is either `pnpm`, `npm`, `yarn`.
+
+
+## Serving content in development
 
 ```bash
 ng serve --host 0.0.0.0 --disable-host-check
 ```
 
+### Using integrated vite / esbuild in Angular 16
+
+![Vite + esbuild](vite_esbuild.png)
+
+>In ng serve we’re now using Vite for the development server, and esbuild powers both your development and production builds!
+>
+>We want to emphasize that Angular CLI relies on Vite exclusively as a development server. To support selector matching, the Angular compiler needs to maintain a dependency graph between your components which requires a different compilation model than Vite.
 
 
- 
+https://blog.angular.io/angular-v16-is-here-4d7a28ec680d
 
 
+#### Using vite during `ng build`
+
+In your project `angular.json`, change 
+
+![Alt text](image.png)
+
+by adding `:browser-esbuild`, resulting in
+
+![Alt text](image-1.png)
 
 
+#### Using vite during `ng serve`
+
+Then (also in `angular.json`) add the text
+```json
+          "options": {
+            "forceEsbuild": true
+          },
+```
+
+in the following location
+
+![Alt text](image-2.png)
+
+
+## Jest support in Angular 16
+
+Install jest
+
+```bash
+npm install jest --save-dev
+```
+
+Add the following to your `angular.json`
+```json
+  "projects": {
+    "my-app": {
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:jest",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+   }
+  }
+```
