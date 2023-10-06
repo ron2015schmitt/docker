@@ -25,7 +25,7 @@ cd path-to-your-files
 docker run -it -v /"${PWD}":/home/user/work    docker-image-name
 ```
 
-The option `-v /"${PWD}":/home/user/work` causes your files in the current directory to be *mounted* at `/home/user/work`` inside the container. Any changes made inside the container will change the files that are outside the container.
+The option `-v /"${PWD}":/home/user/work` causes your files in the current directory to be *mounted* at `/home/user/work` inside the container. Any changes made inside the container will change the files that are outside the container.
 
 The option `-it` puts you in an interactive tty terminal.
 
@@ -106,10 +106,23 @@ Also make sure that `EXPOSE 4200` is included in the Dockerfile.
 Keep in mind that the first time you run `ng serve` inside a project takes a very long time, >10 minutes.
 
 
+## Selecting Angular Version for Your Project
+
+The current version of the global Angular CLI determines the version of Angular to be used.  (Likewise for node and npm.)
+
+```bash
+nvm use node-version
+npm install -g @angular/cli@angular-string
+```
+
+where `node-string` is the nodejs version you want, eg `18.18` and `angular-string` is the Angular version you want, eg `16.2.5`
+
 ## project creation with npm
 ```bash
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
 ng new sample-project  --skip-git
+cd sample-project
+npm install --save-dev typescript
 ```
 
 ## project creation with pnpm
@@ -117,7 +130,7 @@ ng new sample-project  --skip-git
 cd work  # <--- MAKE SURE TO DO THIS OR YOUR WORK WILL NOT BE SAVED
 ng new sample-project --minimal --skip-tests --skip-git --package-manager=pnpm
 cd sample-project
-pnpm add --save-dev typescript
+pnpm add typescript
 ```
 
 ### changing package manager
@@ -160,13 +173,9 @@ https://blog.angular.io/angular-v16-is-here-4d7a28ec680d
 
 #### Using vite during `ng build`
 
-In your project `angular.json`, change 
+In your project `angular.json`, add `-esbuild` to the following line
 
-![Alt text](image.png)
-
-by adding `:browser-esbuild`, resulting in
-
-![Alt text](image-1.png)
+![Alt text](image-3.png)
 
 
 #### Using vite during `ng serve`
