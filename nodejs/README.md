@@ -46,7 +46,7 @@ Include option `-p 5173:5173` in `docker run` command so that `pnpm run dev` wor
 
 Also make sure that `EXPOSE 5173` is included in the Dockerfile.
 
-Refer to [sample-angular-project](https://github.com/ron2015schmitt/sample-react-project/blob/main/README.md#how-this-repo-was-created) for React installation notes.
+Refer to [sample-react-project](https://github.com/ron2015schmitt/sample-react-project/blob/main/README.md#how-this-repo-was-created) for React installation notes.
 
 
 
