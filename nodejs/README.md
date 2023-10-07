@@ -17,7 +17,10 @@ NodeJS
 
 The versions are called out in the file, except those denoted above with an asterisk in which case the latest version is used.
 
-
+Type the following to verify the versions
+```bash
+info
+```
 
 # pnpm
 
