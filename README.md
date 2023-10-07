@@ -105,4 +105,4 @@ Also make sure that `EXPOSE 4200` is included in the Dockerfile.
 
 Keep in mind that the first time you run `ng serve` inside a project takes a very long time, >10 minutes.
 
-Refer to [sample-angular-project](https://github.com/ron2015schmitt/sample-angular-project) for notes on installing Angular.
+Refer to [sample-angular-project](https://github.com/ron2015schmitt/sample-angular-project/tree/main#how-this-repo-was-created) for notes on additional installation notes for Angular.
