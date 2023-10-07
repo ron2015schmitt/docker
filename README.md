@@ -44,16 +44,6 @@ info
 ```
 
 
-# git set up
-
-```bash
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-```
-
-Do not use option `-rm` in `docker run` command if you want the git info to persist.
-
-
 # Connecting to a Container with VS Code
 
 https://code.visualstudio.com/docs/devcontainers/attach-container  
