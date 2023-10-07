@@ -12,12 +12,10 @@ ENV NODE_VERSION=18.18.0
 ENV NPM_VERSION=10.2.0
 ENV NVM_VERSION=0.39.5
 ENV PNPM_VERSION=8.8.0
-ENV ANGULAR_VERSION=16.2.5
-ENV VITE_VERSION=4.4.11
 
 # Expose ports
 # 4200 is default used by Angular
-# 4200 is default used by Vite
+# 5173 is default used by Vite
 EXPOSE 4200  
 EXPOSE 5173
 
@@ -25,7 +23,7 @@ EXPOSE 5173
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
   apt-get upgrade -y &&\
-  apt-get install -y ca-certificates curl dos2unix git vim
+  apt-get install -y ca-certificates curl dos2unix vim
 
 
 RUN chmod a+rx /root/.bashrc
@@ -67,15 +65,13 @@ RUN source ${NVM_DIR}/nvm.sh && \
 RUN source ${NVM_DIR}/nvm.sh &&\
   corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate && SHELL=${SHELL} pnpm setup
 
-# Enable `pnpm add --global` on Alpine Linux by setting
-# home location environment variable to a location already in $PATH
-# https://github.com/pnpm/pnpm/issues/784#issuecomment-1518582235
 ENV PNPM_HOME=/usr/local/bin
 ENV PATH="${PATH}:${PNPM_HOME}"
 USER root
 
-#Install Angular via pnpm
-RUN source ${NVM_DIR}/nvm.sh && pnpm add --global @angular/cli@${ANGULAR_VERSION}
+# OPTIONAL: Install Angular via pnpm
+# ENV ANGULAR_VERSION=16.2.5
+# RUN source ${NVM_DIR}/nvm.sh && pnpm add --global @angular/cli@${ANGULAR_VERSION}
 
 
 
